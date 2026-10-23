@@ -1,56 +1,69 @@
-# 搜狗输入法皮肤
+# 成步堂龙一「异议」搜狗输入法动态皮肤 — V 模式修复版
 
-个人收藏与修复的搜狗输入法皮肤（`.ssf`）存档。
+> 本项目为非官方的搜狗输入法 `.ssf` 皮肤修复版本，并非《逆转裁判》官方作品。
+> 仓库用于收藏与修复搜狗输入法皮肤，当前收录 1 款。
 
-皮肤文件由 **Git LFS** 托管，仓库本身很轻；克隆后需要本地装有 Git LFS 才能拿到实体文件（`git lfs install` 一次即可）。
+## 下载
 
-## 皮肤列表
-
-| 皮肤 | 原作 | 状态 | 下载 |
+| 文件 | 大小 | 校验 | 下载 |
 | :-- | :-- | :-- | :-- |
-| 逆转裁判 · 成步堂龙一「异议」（动态） | 雪泽歌子 | 已修复 v 模式白底白字 | [成步堂龙一异议-修复版.ssf](skins/gyakuten-naruhodo/成步堂龙一异议-修复版.ssf) |
+| 成步堂龙一_异议_动态皮肤_V模式修复版.ssf | 121.9 KB | [SHA256SUMS.txt](SHA256SUMS.txt) | **[直接下载](https://media.githubusercontent.com/media/Dithob/sogou-input-skins/main/%E6%88%90%E6%AD%A5%E5%A0%82%E9%BE%99%E4%B8%80_%E5%BC%82%E8%AE%AE_%E5%8A%A8%E6%80%81%E7%9A%AE%E8%82%A4_V%E6%A8%A1%E5%BC%8F%E4%BF%AE%E5%A4%8D%E7%89%88.ssf)** |
 
-## 安装
+皮肤包由 **Git LFS** 托管。上面的直链指向 LFS 媒体服务器，点击即开始下载，**无需登录、无需克隆仓库**。
 
-**Windows**
-
-1. 下载 `.ssf` 文件；
-2. 双击文件，搜狗会弹出「是否安装该皮肤」，确认即可；
-3. 若双击无反应：右键输入法状态栏 → 皮肤 → 皮肤盒子 → 添加本地皮肤，选中 `.ssf`。
-
-**macOS**（搜狗输入法 for Mac 不支持 `.ssf`）
-
-`.ssf` 是 Windows 版皮肤格式，Mac 版使用 `.ssf` 之外的 mac 皮肤包，无法直接导入。
-
-装好后在 属性设置 → 外观 → 皮肤 中切换。候选项排列方式建议选**纵向**，与这套皮肤的竖排底图配套。
-
-## 修复记录
-
-| 皮肤 | 问题 | 处理 |
-| :-- | :-- | :-- |
-| 成步堂龙一「异议」 | v 模式面板、竖排候选窗白底白字，看不清 | 重绘 `skin2.bmp` / `skin2_1.bmp` / `skin2_2.bmp` 为深蓝底，`separator` 改为 `0x7EA0DF` |
-
-每个皮肤的具体分析见对应目录下的 `NOTES.md`。
-
-## 目录结构
-
-```
-skins/
-  gyakuten-naruhodo/          逆转裁判 成步堂龙一
-    成步堂龙一异议-修复版.ssf
-    NOTES.md                  修复分析与已知限制
-tools/
-  ssf_tool.py                 解包 / 打包 / 查看 .ssf 的小工具
-```
-
-`.ssf` 本质是 ZIP 包（内含 `skin.ini` + 若干 BMP/PNG/GIF 切片），用 `tools/ssf_tool.py` 可以直接拆开看：
+校验方式：
 
 ```bash
-python tools/ssf_tool.py list  skins/gyakuten-naruhodo/成步堂龙一异议-修复版.ssf
-python tools/ssf_tool.py extract skins/gyakuten-naruhodo/成步堂龙一异议-修复版.ssf ./out
-python tools/ssf_tool.py pack  ./out  ./new.ssf
+# Windows
+certutil -hashfile 成步堂龙一_异议_动态皮肤_V模式修复版.ssf SHA256
+# macOS / Linux
+sha256sum 成步堂龙一_异议_动态皮肤_V模式修复版.ssf
+```
+
+结果应与 `SHA256SUMS.txt` 中的 `7659aa607efb25ae285bb2800cff178676a605e6c0e8198b993d842cc97d81a4` 一致。
+
+## 下载与安装
+
+1. 点上方「直接下载」拿到 `.ssf` 文件。
+2. Windows 安装搜狗拼音输入法后，双击 `.ssf` 安装皮肤。
+3. 切换到该皮肤，输入 `v2` 检查 V 模式候选显示。
+4. 若遇到缓存，尝试重新切换皮肤或重启输入法。
+
+## 修复内容
+
+- 将 V 模式相关背景修改为 **RGB(37, 54, 90)** 主色的深蓝渐变，以改善白色候选文字的对比度。
+- 删除此前右侧出现的明显竖向装饰线。
+- 使用用户提供的金色律师徽章图片，放置在 **右上角**。
+- 保留普通输入模式原始文字颜色、原始动态 GIF 及其他普通模式资源。
+
+> 修复版经过压缩包完整性校验，并有安装后截图反馈；不同搜狗版本的实际显示可能略有差异。
+
+问题根因与改动清单见 [notes/成步堂龙一异议-修复分析.md](notes/成步堂龙一异议-修复分析.md)，版本记录见 [CHANGELOG.md](CHANGELOG.md)。
+
+## 已知限制
+
+- `.ssf` 是 Windows 版皮肤格式，**搜狗输入法 for Mac 无法导入**。
+- 横排双行方案（`[Scheme_H2]`）沿用原皮肤的浅色底图，若把候选项设为「横向 + 双行」，仍可能出现浅底白字。把候选排列切成**纵向**即可避开。
+
+## 仓库结构
+
+```
+成步堂龙一_异议_动态皮肤_V模式修复版.ssf   皮肤本体（Git LFS）
+SHA256SUMS.txt                             校验值
+CHANGELOG.md                               版本记录
+notes/                                     修复分析与技术细节
+tools/ssf_tool.py                          ssf 解包 / 打包 / 查看工具
+```
+
+`.ssf` 本质是 ZIP 包（`skin.ini` + 若干 BMP/PNG/GIF 切片），可以直接拆开：
+
+```bash
+python tools/ssf_tool.py list  成步堂龙一_异议_动态皮肤_V模式修复版.ssf
+python tools/ssf_tool.py info  成步堂龙一_异议_动态皮肤_V模式修复版.ssf
+python tools/ssf_tool.py extract 成步堂龙一_异议_动态皮肤_V模式修复版.ssf ./out
+python tools/ssf_tool.py pack    ./out ./new.ssf
 ```
 
 ## 免责声明
 
-皮肤的美术素材、角色形象版权归原作者（雪泽歌子）及原作权利人（CAPCOM）所有。本仓库仅作个人存档与兼容性修复记录，不用于任何商业用途；如权利人认为不妥，请联系删除。
+皮肤美术素材、角色形象版权归原作者（雪泽歌子）及原作权利人（CAPCOM）所有。本仓库仅作个人存档与兼容性修复记录，不用于任何商业用途；如权利人认为不妥，请联系删除。
