@@ -1,0 +1,14 @@
+## Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+## 解包临时产物
+out/
+*.extracted/
+
+## 系统
+.DS_Store
+Thumbs.db
+desktop.ini

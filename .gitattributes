@@ -1,0 +1,9 @@
+# 皮肤包统一走 Git LFS，仓库里只存指针
+*.ssf filter=lfs diff=lfs merge=lfs -text
+
+# 源码按文本处理，统一 LF
+*.py  text eol=lf
+*.md  text eol=lf
+*.txt text eol=lf
+.gitattributes text eol=lf
+.gitignore     text eol=lf
